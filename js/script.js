@@ -97,6 +97,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set Initial Date in Dashboard
     const dateOptions = { weekday: 'long', month: 'short', day: 'numeric' };
-    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+    const dateElem = document.getElementById('currentDate');
+    if (dateElem) dateElem.textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+    // ==========================================
+    // DEMO LOGIN LOGIC
+    // ==========================================
+    const googleBtn = document.getElementById('googleSignInBtn');
+    const emailBtn = document.getElementById('emailSignInBtn');
+
+    function handleDemoLogin() {
+        // Change button text to show loading state
+        const originalText = emailBtn.innerHTML;
+        emailBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
+        if (googleBtn) googleBtn.style.opacity = '0.5';
+
+        // Simulate network request delay (1.5 seconds)
+        setTimeout(() => {
+            // Update UI to reflect logged-in state
+            const headerGreeting = document.querySelector('.welcome-banner h1');
+            if (headerGreeting) headerGreeting.innerHTML = 'Hello, Student! <span>👋</span>';
+
+            // Change profile icon to green to indicate active session
+            const profileIcon = document.querySelector('.profile-pic i');
+            if (profileIcon) {
+                profileIcon.classList.remove('fa-regular');
+                profileIcon.classList.add('fa-solid');
+                document.querySelector('.profile-pic').style.color = 'var(--secondary)';
+                document.querySelector('.profile-pic').style.borderColor = 'var(--secondary)';
+            }
+
+            // Close modal and reset buttons
+            closeModal('authModal');
+            emailBtn.innerHTML = originalText;
+            if (googleBtn) googleBtn.style.opacity = '1';
+
+            // Show a simple alert welcoming the user
+            alert("Demo Login Successful! Your progress will now be tracked locally during this session.");
+        }, 1500);
+    }
+
+    if (googleBtn) googleBtn.addEventListener('click', handleDemoLogin);
+    if (emailBtn) emailBtn.addEventListener('click', handleDemoLogin);
 
 });

@@ -121,7 +121,8 @@
                             <h5>Build a Timer</h5>
                             <span>Project • Entry</span>
                         </div>
-                        <button class="btn-small" data-key="start_btn">Start</button>
+                        <button class="btn-small" data-key="start_btn"
+                            onclick="window.switchView('learning')">Start</button>
                     </div>
                 </div>
             </section>
@@ -444,35 +445,6 @@
         </div>
 
     </div>
-
-    <!-- Firebase SDKs (Modular) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-
-        // TODO: Replace with user Firebase config
-        const firebaseConfig = {
-            // apiKey: "...",
-            // authDomain: "...",
-            // projectId: "...",
-            // storageBucket: "...",
-            // messagingSenderId: "...",
-            // appId: "..."
-        };
-
-        // Initialize Firebase
-        // const app = initializeApp(firebaseConfig);
-        // const auth = getAuth(app);
-        // const db = getFirestore(app);
-
-        // Make Firebase instances available globally for UI functions
-        // window.firebaseAuth = auth;
-        // window.firebaseDb = db;
-        // window.GoogleAuthProvider = GoogleAuthProvider;
-        // window.signInWithPopup = signInWithPopup;
-        // window.signOut = signOut;
-    </script>
 
     <!-- Scripts -->
     <script src="js/data.js"></script>
