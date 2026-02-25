@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EduTech - Learn, Practice, Get Hired</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- App Container -->
+    <div id="app" class="app-container">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>EduTech</span>
+            </div>
+            <div class="header-actions">
+                <div class="lang-toggle" id="langToggle">
+                    <span class="lang-btn active" data-lang="en">EN</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-btn" data-lang="hi">HI</span>
+                </div>
+                <div class="profile-pic">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="mainContent">
+
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view-section active">
+                <div class="welcome-banner">
+                    <h1 data-key="greeting">Hello, User! <span>👋</span></h1>
+                    <p data-key="greeting_desc">Ready to learn something new today?</p>
+                </div>
+
+                <!-- Daily Progress Tracker -->
+                <div class="card progress-tracker">
+                    <div class="card-header">
+                        <h3 data-key="daily_progress">Daily Progress</h3>
+                        <span class="date" id="currentDate">Today</span>
+                    </div>
+                    <div class="progress-body">
+                        <div class="progress-ring">
+                            <svg viewBox="0 0 36 36" class="circular-chart primary">
+                                <path class="circle-bg" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" stroke-dasharray="65, 100" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage">65%</text>
+                            </svg>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat-item">
+                                <span class="dot completed"></span>
+                                <div class="stat-info">
+                                    <h4 data-key="completed_tasks">Completed</h4>
+                                    <p>3 Tasks</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="dot pending"></span>
+                                <div class="stat-info">
+                                    <h4 data-key="pending_tasks">Pending</h4>
+                                    <p>2 Tasks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions grid-2">
+                    <div class="action-card" onclick="switchView('learning')">
+                        <div class="icon-wrap bg-blue"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h4 data-key="learning_path">Learning Path</h4>
+                        <p data-key="resume_learning">Resume Front-End Dev</p>
+                    </div>
+                    <div class="action-card" onclick="switchView('community')">
+                        <div class="icon-wrap bg-purple"><i class="fa-solid fa-robot"></i></div>
+                        <h4 data-key="ai_doubt">AI Doubt Solver</h4>
+                        <p data-key="ask_anything">Ask anything instantly</p>
+                    </div>
+                </div>
+
+                <!-- Upcoming Challenges -->
+                <div class="section-title">
+                    <h3 data-key="upcoming_quizzes">Quizzes & Projects</h3>
+                    <a href="#" class="view-all" data-key="view_all">View All</a>
+                </div>
+                <div class="horizontal-scroll">
+                    <div class="mini-card outline">
+                        <div class="mini-card-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="mini-card-info">
+                            <h5>JS Basics Quiz</h5>
+                            <span>15 Mins • 10 Qs</span>
+                        </div>
+                        <button class="btn-small" data-key="start_btn" onclick="openModal('quizModal')">Start</button>
+                    </div>
+                    <div class="mini-card outline">
+                        <div class="mini-card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="mini-card-info">
+                            <h5>Build a Timer</h5>
+                            <span>Project • Entry</span>
+                        </div>
+                        <button class="btn-small" data-key="start_btn">Start</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning View -->
+            <section id="view-learning" class="view-section">
+                <header class="section-header">
+                    <h2 data-key="nav_learning">Learning</h2>
+                    <p data-key="learning_subtitle">Structured Roadmaps: Beginner to Pro</p>
+                </header>
+
+                <div class="roadmap-timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"><i class="fa-solid fa-check"></i></div>
+                        <div class="timeline-content card">
+                            <h4>HTML & CSS Fundamentals</h4>
+                            <p>Completed on 12 Feb</p>
+                            <span class="badge success" style="cursor: pointer"
+                                onclick="openModal('certModal')">Certificate Earned (Click)</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"><i class="fa-solid fa-play"></i></div>
+                        <div class="timeline-content card active-card">
+                            <h4>JavaScript Essentials</h4>
+                            <p>Module 3: Functions & Objects</p>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" style="width: 40%"></div>
+                            </div>
+                            <button class="btn-primary full-width mt-10" data-key="continue_learning">Continue
+                                Learning</button>
+                        </div>
+                    </div>
+                    <div class="timeline-item locked">
+                        <div class="timeline-marker"><i class="fa-solid fa-lock"></i></div>
+                        <div class="timeline-content card">
+                            <h4>React & Modern Web</h4>
+                            <p>Unlock by completing JS Essentials</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community View -->
+            <section id="view-community" class="view-section">
+                <header class="section-header">
+                    <h2 data-key="nav_community">Community & Support</h2>
+                </header>
+
+                <!-- AI Solver Tab -->
+                <div class="ai-solver-card card">
+                    <div class="ai-header">
+                        <div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div>
+                            <h3 data-key="ai_tutor">EduAI Tutor</h3>
+                            <span class="status-online">Online</span>
+                        </div>
+                    </div>
+                    <div class="ai-chat-box">
+                        <div class="message received">
+                            <p data-key="ai_welcome">Hello! I'm your AI tutor. Got a doubt about your code or a concept?
+                                Ask me!</p>
+                        </div>
+                        <div class="message sent">
+                            <p>Can you explain closures in JavaScript?</p>
+                        </div>
+                        <div class="message received">
+                            <p>A closure gives you access to an outer function's scope from an inner function. In
+                                JavaScript, closures are created every time a function is created, at function creation
+                                time.</p>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" placeholder="Type your doubt here..." data-key-placeholder="type_doubt">
+                        <button class="btn-icon"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+
+                <div class="section-title mt-20">
+                    <h3 data-key="community_forum">Community Forum</h3>
+                </div>
+                <div class="forum-feed">
+                    <div class="forum-post card">
+                        <div class="post-header">
+                            <div class="user-avatar">A</div>
+                            <div class="user-meta">
+                                <h5>Amit Kumar</h5>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <p>Anyone working on the React project? I'm stuck on setting up Vite.</p>
+                        </div>
+                        <div class="post-actions">
+                            <span><i class="fa-regular fa-thumbs-up"></i> 12</span>
+                            <span><i class="fa-regular fa-comment"></i> 4</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jobs View -->
+            <section id="view-jobs" class="view-section">
+                <header class="section-header">
+                    <h2 data-key="nav_jobs">Career & Jobs</h2>
+                    <p data-key="jobs_subtitle">Get ready for your first tech job</p>
+                </header>
+
+                <div class="job-tools grid-2">
+                    <div class="tool-card card text-center">
+                        <div class="tool-icon"><i class="fa-regular fa-file-lines"></i></div>
+                        <h4 data-key="resume_builder">Resume Builder</h4>
+                        <button class="btn-outline-small mt-10">Create Now</button>
+                    </div>
+                    <div class="tool-card card text-center">
+                        <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
+                        <h4 data-key="mock_interview">Mock Interview</h4>
+                        <button class="btn-outline-small mt-10">Schedule AI</button>
+                    </div>
+                </div>
+
+                <div class="section-title mt-20">
+                    <h3 data-key="job_board">Job Board (Fresher Friendly)</h3>
+                </div>
+
+                <div class="job-list">
+                    <div class="job-card card">
+                        <div class="job-header">
+                            <div class="company-logo bg-dark"><i class="fa-brands fa-google"></i></div>
+                            <div class="job-info">
+                                <h4>Junior Frontend Developer</h4>
+                                <span>TechSolutions Inc. • Remote</span>
+                            </div>
+                        </div>
+                        <div class="job-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">0-1 Yrs Exp</span>
+                        </div>
+                        <button class="btn-primary full-width mt-10" data-key="apply_now">Apply Now</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-target="dashboard">
+                <i class="fa-solid fa-house"></i>
+                <span data-key="nav_home">Home</span>
+            </a>
+            <a href="#" class="nav-item" data-target="learning">
+                <i class="fa-solid fa-book-open"></i>
+                <span data-key="nav_learning">Learn</span>
+            </a>
+            <a href="#" class="nav-item" data-target="community">
+                <i class="fa-solid fa-users"></i>
+                <span data-key="nav_community">Community</span>
+            </a>
+            <a href="#" class="nav-item" data-target="jobs">
+                <i class="fa-solid fa-briefcase"></i>
+                <span data-key="nav_jobs">Jobs</span>
+            </a>
+        </nav>
+
+        <!-- Modals -->
+        <div class="modal-overlay" id="quizModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 data-key="quiz_title">JavaScript Quiz</h3>
+                    <button class="btn-close" onclick="closeModal('quizModal')"><i
+                            class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-20"><strong>Q1:</strong> What is a closure in JavaScript?</p>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1"> A function bundled with its lexical environment
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1"> A new block scope
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1"> A syntax error
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-primary full-width" onclick="closeModal('quizModal')">Submit Answer</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="certModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 data-key="certificate_title">Your Certificate</h3>
+                    <button class="btn-close" onclick="closeModal('certModal')"><i
+                            class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="certificate-preview">
+                        <h2>Certificate of Completion</h2>
+                        <p>This certifies that</p>
+                        <h4>User</h4>
+                        <p>has successfully completed the <strong>HTML & CSS Fundamentals</strong> module.</p>
+                        <div class="cert-seal"><i class="fa-solid fa-award"></i></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-outline-small full-width"><i class="fa-solid fa-share-nodes"></i> Share</button>
+                    <button class="btn-primary full-width" onclick="closeModal('certModal')"><i
+                            class="fa-solid fa-download"></i> Download</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
