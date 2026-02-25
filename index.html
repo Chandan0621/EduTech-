@@ -34,7 +34,7 @@
                     <span class="lang-divider">|</span>
                     <span class="lang-btn" data-lang="hi">HI</span>
                 </div>
-                <div class="profile-pic">
+                <div class="profile-pic" onclick="openModal('authModal')" style="cursor: pointer;" id="userProfileBtn">
                     <i class="fa-regular fa-user"></i>
                 </div>
             </div>
@@ -234,12 +234,13 @@
                     <div class="tool-card card text-center">
                         <div class="tool-icon"><i class="fa-regular fa-file-lines"></i></div>
                         <h4 data-key="resume_builder">Resume Builder</h4>
-                        <button class="btn-outline-small mt-10">Create Now</button>
+                        <button class="btn-outline-small mt-10" onclick="openModal('resumeModal')">Create Now</button>
                     </div>
                     <div class="tool-card card text-center">
                         <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
                         <h4 data-key="mock_interview">Mock Interview</h4>
-                        <button class="btn-outline-small mt-10">Schedule AI</button>
+                        <button class="btn-outline-small mt-10" onclick="openModal('interviewModal')">Schedule
+                            AI</button>
                     </div>
                 </div>
 
@@ -261,7 +262,8 @@
                             <span class="tag">JavaScript</span>
                             <span class="tag">0-1 Yrs Exp</span>
                         </div>
-                        <button class="btn-primary full-width mt-10" data-key="apply_now">Apply Now</button>
+                        <button class="btn-primary full-width mt-10" data-key="apply_now"
+                            onclick="openModal('applyModal')">Apply Now</button>
                     </div>
                 </div>
             </section>
@@ -338,7 +340,139 @@
             </div>
         </div>
 
+        <!-- Auth Modal -->
+        <div class="modal-overlay" id="authModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 data-key="auth_title">Join EduTech</h3>
+                    <button class="btn-close" onclick="closeModal('authModal')"><i
+                            class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="logo justify-center mb-20" style="justify-content: center;">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>EduTech</span>
+                    </div>
+                    <p class="mb-20" data-key="auth_desc">Log in to save your daily progress and participate in the
+                        community forum.</p>
+
+                    <button class="btn-outline-small full-width mb-20" id="googleSignInBtn"
+                        style="padding: 12px; font-size: 1rem; color: #333; border-color: #ddd; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google"
+                            width="20">
+                        Continue with Google
+                    </button>
+
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <hr style="flex: 1; border: none; border-top: 1px solid var(--border-color);">
+                        <span style="padding: 0 10px; font-size: 0.8rem; color: var(--text-muted);">OR</span>
+                        <hr style="flex: 1; border: none; border-top: 1px solid var(--border-color);">
+                    </div>
+
+                    <input type="email" id="authEmail" placeholder="Email Address"
+                        style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; outline: none;">
+                    <input type="password" id="authPassword" placeholder="Password"
+                        style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 16px; outline: none;">
+
+                    <button class="btn-primary full-width" id="emailSignInBtn">Sign In / Sign Up</button>
+                    <p id="authErrorMsg"
+                        style="color: var(--danger); font-size: 0.8rem; margin-top: 10px; display: none;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Builder Modal -->
+        <div class="modal-overlay" id="resumeModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Resume Builder</h3>
+                    <button class="btn-close" onclick="closeModal('resumeModal')"><i
+                            class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa-solid fa-file-invoice"
+                        style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+                    <p class="mb-20">Enter your details to generate a professional PDF resume instantly.</p>
+                    <input type="text" placeholder="Full Name"
+                        style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid var(--border-color); border-radius: 6px;">
+                    <input type="text" placeholder="Key Skills (e.g. HTML, JS)"
+                        style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid var(--border-color); border-radius: 6px;">
+                    <button class="btn-primary full-width" onclick="closeModal('resumeModal')">Generate Resume</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mock Interview Modal -->
+        <div class="modal-overlay" id="interviewModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>AI Mock Interview</h3>
+                    <button class="btn-close" onclick="closeModal('interviewModal')"><i
+                            class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa-solid fa-video"
+                        style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
+                    <p class="mb-20">Practice answering frontend questions with our AI voice bot.</p>
+                    <button class="btn-primary full-width" style="background: var(--secondary);"
+                        onclick="closeModal('interviewModal')"><i class="fa-solid fa-microphone"></i> Start
+                        Interview</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apply Job Modal -->
+        <div class="modal-overlay" id="applyModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Apply for Job</h3>
+                    <button class="btn-close" onclick="closeModal('applyModal')"><i
+                            class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="company-logo bg-dark"
+                        style="margin: 0 auto 16px; width: 60px; height: 60px; font-size: 2rem;"><i
+                            class="fa-brands fa-google"></i></div>
+                    <h4>Junior Frontend Developer</h4>
+                    <p class="mb-20">TechSolutions Inc.</p>
+                    <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--text-light);">Your profile and
+                        resume will be sent directly to the recruiter.</p>
+                    <button class="btn-primary full-width" onclick="closeModal('applyModal')">Confirm
+                        Application</button>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Firebase SDKs (Modular) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+        // TODO: Replace with user Firebase config
+        const firebaseConfig = {
+            // apiKey: "...",
+            // authDomain: "...",
+            // projectId: "...",
+            // storageBucket: "...",
+            // messagingSenderId: "...",
+            // appId: "..."
+        };
+
+        // Initialize Firebase
+        // const app = initializeApp(firebaseConfig);
+        // const auth = getAuth(app);
+        // const db = getFirestore(app);
+
+        // Make Firebase instances available globally for UI functions
+        // window.firebaseAuth = auth;
+        // window.firebaseDb = db;
+        // window.GoogleAuthProvider = GoogleAuthProvider;
+        // window.signInWithPopup = signInWithPopup;
+        // window.signOut = signOut;
+    </script>
 
     <!-- Scripts -->
     <script src="js/data.js"></script>
